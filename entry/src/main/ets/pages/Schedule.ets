@@ -59,6 +59,17 @@ export struct Schedule {
         }.width('100%')
         .height('100%')
       }
+      Button() {
+        Image($r('app.media.add'))
+      }
+      .width(50)
+      .height(50)
+      .position({x: '80%', y: 600})
+      .shadow({radius: 10})
+      .onClick(() => {
+
+      })
+
     }
   }
 }
