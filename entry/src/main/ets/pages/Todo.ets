@@ -13,7 +13,7 @@ struct Todo {
     for (let index = 0; index < data.length; index++) {
       data[index] = ({
         name: "TODO" + index,
-        desc: "TODO" + index,
+        desc: "desc---" + index,
         type: TodoType.TODO,
         status: TodoStatus.UNFINISHED,
         createTime: Date.now(),
@@ -32,15 +32,21 @@ struct Todo {
 
   build() {
     Row() {
-      Column() {
-        ForEach(this.fetchData() as TodoModel[], (item: TodoModel) => {
-          TodoItem({
-            data: item
-          })
-        },
-          (item: TodoModel) => item.id.toString()
-        )
+      Scroll() {
+        Column() {
+          ForEach(this.fetchData() as TodoModel[], (item: TodoModel) => {
+            TodoItem({
+              data: item
+            })
+          },
+            (item: TodoModel) => item.id.toString()
+          )
+        }
+
       }
+      .scrollable(ScrollDirection.Vertical)
+      .scrollBar(BarState.Auto)
+      .scrollBarWidth(10)
     }
   }
 }
