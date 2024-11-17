@@ -1,3 +1,5 @@
+import { router } from '@kit.ArkUI';
+
 @Entry
 @Component
 struct Index {
@@ -10,13 +12,18 @@ struct Index {
           .fontSize(50)
           .fontWeight(FontWeight.Bold)
 
-        Button(){
+        Button() {
           Text('Click Me')
             .fontSize(15)
             .padding(20)
-            .fontColor( Color.White)
-            .onClick(e=>{
-              this.message="Clicked!"
+            .fontColor(Color.White)
+            .onClick(async e => {
+              this.message = "Clicked!"
+              await router.pushUrl(
+                {
+                  url: 'pages/Todo'
+                }
+              )
             })
         }
       }
