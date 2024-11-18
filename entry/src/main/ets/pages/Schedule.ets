@@ -4,6 +4,8 @@ import { ToDoList } from '../view/ToDoList'
 
 @Component
 export struct Schedule {
+  @Prop stateEffect: boolean = true;
+
   build() {
     Column(){
       CJCalendar({
@@ -60,8 +62,12 @@ export struct Schedule {
         .height('100%')
       }
       Button() {
-        Image($r('app.media.add'))
+
+        // Image($r('app.media.add'))
       }
+      .stateEffect(this.stateEffect)
+      .backgroundImage($r('app.media.add'))
+      // .backgroundImage($r('app.media.add'))
       .width(50)
       .height(50)
       .position({x: '80%', y: 600})
@@ -69,7 +75,6 @@ export struct Schedule {
       .onClick(() => {
 
       })
-
     }
   }
 }

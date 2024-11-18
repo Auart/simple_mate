@@ -2,6 +2,8 @@ import { Schedule } from './Schedule'
 import { Quadrant } from './Quadrant'
 import { Constants } from '../common/Constants';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
+
 @Entry
 @Component
 struct Index {
@@ -36,7 +38,7 @@ struct Index {
       .backgroundColor(Color.White)
       .tabBar(this.tabBuilder(Constants.TAB_INDEX_ZERO, $r('app.media.waitdone_selected'), $r('app.media.waitdone_normal')));
       TabContent() {
-          Schedule()
+          Schedule().height("100%")
       }
       .padding({ left: 12, right: 12 })
       .backgroundColor(Color.White)
