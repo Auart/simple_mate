@@ -4,6 +4,8 @@ import { Constants } from '../common/Constants';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 
+import { router } from '@kit.ArkUI';
+
 @Entry
 @Component
 struct Index {
