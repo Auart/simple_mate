@@ -28,29 +28,37 @@ struct Index {
     })
   }
   build() {
+
+
     Tabs({
       barPosition: BarPosition.End,
       controller: this.tabsController
     }) {
+
       TabContent() {
+
+        //待办
           Todo()
       }
       .padding({ left: 12, right: 12 })
       .backgroundColor(Color.White)
       .tabBar(this.tabBuilder(Constants.TAB_INDEX_ZERO, $r('app.media.waitdone_selected'), $r('app.media.waitdone_normal')));
       TabContent() {
+        //日程
           Schedule().height("100%")
       }
       .padding({ left: 12, right: 12 })
       .backgroundColor(Color.White)
       .tabBar(this.tabBuilder( Constants.TAB_INDEX_ONE, $r('app.media.calendar_selected'), $r('app.media.calendar_normal')));
       TabContent() {
+        //四象限
           Quadrant()
       }
       .padding({ left: 12, right: 12 })
       .backgroundColor(Color.White)
       .tabBar(this.tabBuilder( Constants.TAB_INDEX_TWO, $r('app.media.more_selected'), $r('app.media.more_normal')));
       TabContent() {
+        //设置
         Text("设置")
       }
       .padding({ left: 12, right: 12 })

@@ -1,9 +1,9 @@
 import { CJCalendar, OptMode } from 'cjcalendar'
 import promptAction from '@ohos.promptAction'
-// import { ToDoList } from '../view/ToDoList'
+
 
 @Component
-export struct Schedule {
+export   struct Schedule {
   @Prop stateEffect: boolean = true;
 
   build() {
@@ -40,19 +40,26 @@ export struct Schedule {
                   {
                     title: '高效工作模板',
                     action: () => {
-                      console.log('work')
+                      promptAction.showToast({
+                        message:"高效工作模板"
+                      })
                     }
                   },
                   {
                     title: '学习提升模板',
                     action: () => {
-                      console.log('study')
+                      promptAction.showToast({
+                        message:"学习提升模板"
+                      }
+                      )
                     }
                   },
                   {
                     title: '休闲娱乐模板',
                     action: () => {
-                      console.log('leisure')
+                      promptAction.showToast({
+                        message:"休闲娱乐模板"
+                      })
                     }
                   }
                 ]
@@ -62,7 +69,6 @@ export struct Schedule {
         .height('100%')
       }
       Button() {
-
         // Image($r('app.media.add'))
       }
       .stateEffect(this.stateEffect)
@@ -76,6 +82,10 @@ export struct Schedule {
 
       })
     }
+  }
+
+  @Builder ClickMe(){
+
   }
 }
 
