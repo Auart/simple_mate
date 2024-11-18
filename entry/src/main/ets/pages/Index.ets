@@ -1,6 +1,6 @@
 import { Schedule } from './Schedule'
 import { Quadrant } from './Quadrant'
-import { Constants } from '../common/Constants';
+import { Constants } from '../common/constants/Constants';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 
