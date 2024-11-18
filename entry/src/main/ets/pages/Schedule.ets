@@ -1,6 +1,6 @@
 import { CJCalendar, OptMode } from 'cjcalendar'
 import promptAction from '@ohos.promptAction'
-import { ToDoList } from '../view/ToDoList'
+// import { ToDoList } from '../view/ToDoList'
 
 @Component
 export struct Schedule {
@@ -12,7 +12,7 @@ export struct Schedule {
         // 范围选择
         optMode: OptMode.MULTIPLE,
       })
-      ToDoList()
+      // ToDoList()
       Row(){
         Text('选择日程模板')
           .fontSize(20)

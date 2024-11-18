@@ -2,9 +2,8 @@ import { Schedule } from './Schedule'
 import { Quadrant } from './Quadrant'
 import { Constants } from '../common/constants/Constants';
 import { hilog } from '@kit.PerformanceAnalysisKit';
-
-
 import { router } from '@kit.ArkUI';
+import {Todo} from './Todo'
 
 @Entry
 @Component
@@ -34,7 +33,7 @@ struct Index {
       controller: this.tabsController
     }) {
       TabContent() {
-        Text("待办")
+          Todo()
       }
       .padding({ left: 12, right: 12 })
       .backgroundColor(Color.White)

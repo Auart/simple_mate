@@ -1,4 +1,4 @@
-import TodoModel from '../../model/Todo'
+import TodoModel from '../../model/TodoModel'
 
 @CustomDialog
 export  default  struct Detail {
