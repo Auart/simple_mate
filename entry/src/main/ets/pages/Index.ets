@@ -1,34 +1,80 @@
+import { Schedule } from './Schedule'
+import { Quadrant } from './Quadrant'
+import { Constants } from '../common/constants/Constants';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 import { router } from '@kit.ArkUI';
+import {Todo} from './Todo'
 
 @Entry
 @Component
 struct Index {
-  @State message: string = 'Hello World';
+  @State currentIndex: number = 0;
+  private tabsController: TabsController = new TabsController();
 
-  build() {
-    Row() {
-      Column() {
-        Text(this.message)
-          .fontSize(50)
-          .fontWeight(FontWeight.Bold)
-
-        Button() {
-          Text('Click Me')
-            .fontSize(15)
-            .padding(20)
-            .fontColor(Color.White)
-            .onClick(async e => {
-              this.message = "Clicked!"
-              await router.pushUrl(
-                {
-                  url: 'pages/Todo'
-                }
-              )
-            })
-        }
-      }
-      .width('100%')
+  @Builder
+  tabBuilder(index: number, selectedImg: Resource, normalImg: Resource) {
+    Column() {
+      Image(this.currentIndex === index ? selectedImg : normalImg)
+        .width(24)
+        .height(24)
+        .objectFit(ImageFit.Contain)
     }
-    .height('100%')
+    .justifyContent(FlexAlign.Center)
+    .height(52)
+    .width('100%')
+    .onClick(() => {
+      this.currentIndex = index;
+      this.tabsController.changeIndex(this.currentIndex);
+    })
+  }
+  build() {
+
+
+    Tabs({
+      barPosition: BarPosition.End,
+      controller: this.tabsController
+    }) {
+
+      TabContent() {
+
+        //待办
+          Todo()
+      }
+      .padding({ left: 12, right: 12 })
+      .backgroundColor(Color.White)
+      .tabBar(this.tabBuilder(Constants.TAB_INDEX_ZERO, $r('app.media.waitdone_selected'), $r('app.media.waitdone_normal')));
+      TabContent() {
+        //日程
+          Schedule().height("100%")
+      }
+      .padding({ left: 12, right: 12 })
+      .backgroundColor(Color.White)
+      .tabBar(this.tabBuilder( Constants.TAB_INDEX_ONE, $r('app.media.calendar_selected'), $r('app.media.calendar_normal')));
+      TabContent() {
+        //四象限
+          Quadrant()
+      }
+      .padding({ left: 12, right: 12 })
+      .backgroundColor(Color.White)
+      .tabBar(this.tabBuilder( Constants.TAB_INDEX_TWO, $r('app.media.more_selected'), $r('app.media.more_normal')));
+      TabContent() {
+        //设置
+        Text("设置")
+      }
+      .padding({ left: 12, right: 12 })
+      .backgroundColor(Color.White)
+      .tabBar(this.tabBuilder( Constants.TAB_INDEX_THREE, $r('app.media.set_selected'), $r('app.media.set_normal')));
+    }
+    .width('100%')
+    .backgroundColor('#F3F4F5')
+    .barHeight(52)
+    .barMode(BarMode.Fixed)
+    .onAnimationStart((index: number, targetIndex: number) => {
+      hilog.info(0x0000, 'index', index.toString());
+      this.currentIndex = targetIndex;
+    })
   }
 }
+
+
+

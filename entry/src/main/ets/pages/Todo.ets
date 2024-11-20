@@ -1,12 +1,12 @@
 import { TodoStatus } from '../common/constants/todo/TodoStatus'
 import { TodoType } from '../common/constants/todo/TodoType'
-import TodoModel from "../model/Todo"
+import TodoModel from "../model/TodoModel"
 import { CardRecognition } from '@hms.ai.CardRecognition'
 import TodoItem from "../view/todo/TodoItem"
 
-@Entry
+// @Entry
 @Component
-struct Todo {
+export struct Todo {
   fetchData(): TodoModel[] {
     let data: TodoModel[] = new Array<TodoModel>(100)
 
